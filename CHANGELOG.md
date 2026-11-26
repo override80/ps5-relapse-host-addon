@@ -10,3 +10,6 @@
 - Tools usable inside the container via docker exec: TOOLS.md added to the image
   (/app/TOOLS.md), netcat-openbsd installed, send_payload.py now defaults to
   PS5_HOST/PS5_PORT/PS5_PAYLOAD env vars (PS5_HOST defaults to 10.11.12.74).
+
+## 1.1.1
+- Docs: name-agnostic docker exec command (container is app_<repo>_ps5_relapse_host).

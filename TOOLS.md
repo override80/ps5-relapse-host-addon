@@ -3,7 +3,8 @@
 Enter the container from the hassio host:
 
 ```bash
-sudo docker exec -it addon_e6c4340c_ps5_relapse_host bash
+C=$(sudo docker ps --format "{{.Names}}" | grep ps5_relapse)
+sudo docker exec -it "$C" bash
 ```
 
 (The container runs with `host_network: true`, so it reaches the PS5 directly.)

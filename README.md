@@ -30,6 +30,7 @@ The payload tools ship in the image at `/app/tools/` — see **`/app/TOOLS.md`**
 inside the container for the full `docker exec` workflow:
 
 ```bash
-sudo docker exec -it addon_e6c4340c_ps5_relapse_host bash
+C=$(sudo docker ps --format "{{.Names}}" | grep ps5_relapse)
+sudo docker exec -it "$C" bash
 # then: nc -z -w 4 $PS5_HOST 9021; python3 /app/tools/send_payload.py; ...
 ```
