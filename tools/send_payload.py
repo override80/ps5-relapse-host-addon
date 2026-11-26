@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
 """Send a payload ELF to a PS5 ELF loader (elfldr) on port 9021.
 
-Usage: python3 send_payload.py <ps5-ip> <port> <payload.elf>
+Usage: send_payload.py [ps5-ip] [port] [payload.elf]
+Defaults: PS5_HOST (or 10.11.12.74), PS5_PORT (or 9021),
+          PS5_PAYLOAD (or /app/tools/shsrv-ps5.elf inside the addon).
 """
+import os
 import socket
 import sys
 
 
 def main():
-    if len(sys.argv) != 4:
+    args = sys.argv[1:]
+    if args and args[0] in ("-h", "--help"):
         print(__doc__)
-        sys.exit(1)
-    host, port, path = sys.argv[1], int(sys.argv[2]), sys.argv[3]
+        sys.exit(0)
+    host = args[0] if len(args) > 0 else os.environ.get("PS5_HOST", "10.11.12.74")
+    port = int(args[1]) if len(args) > 1 else int(os.environ.get("PS5_PORT", "9021"))
+    path = args[2] if len(args) > 2 else os.environ.get("PS5_PAYLOAD", "/app/tools/shsrv-ps5.elf")
+
     with open(path, "rb") as f:
         data = f.read()
     print(f"sending {len(data)} bytes from {path} to {host}:{port}")

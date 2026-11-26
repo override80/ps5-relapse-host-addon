@@ -23,3 +23,13 @@ ssh hassio 'sudo cp -r /tmp/tools/new/ps5-exploit-host /addons/'
 Verify: `nc -z <hassio-ip> 8082` and
 `curl -k --resolve manuals.playstation.net:443:<hassio-ip> https://manuals.playstation.net/`
 should return the `PS5-Relapse` page.
+
+## Tools inside the container
+
+The payload tools ship in the image at `/app/tools/` — see **`/app/TOOLS.md`**
+inside the container for the full `docker exec` workflow:
+
+```bash
+sudo docker exec -it addon_e6c4340c_ps5_relapse_host bash
+# then: nc -z -w 4 $PS5_HOST 9021; python3 /app/tools/send_payload.py; ...
+```
