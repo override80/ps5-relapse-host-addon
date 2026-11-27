@@ -34,3 +34,5 @@ C=$(sudo docker ps --format "{{.Names}}" | grep ps5_relapse)
 sudo docker exec -it "$C" bash
 # then: nc -z -w 4 $PS5_HOST 9021; python3 /app/tools/send_payload.py; ...
 ```
+
+For the full day-to-day guide see **`/app/GUIDE.md`** inside the container (also in this repo).

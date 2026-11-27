@@ -28,3 +28,6 @@
 - TOOLS.md rewritten: per-tool instructions, exact backup folders (USB root for
   dumps/installs, /data/etaHen/games, /data/etaHen/pkgs), autoloader setup, pfSense
   update-block location.
+
+## 1.5.0
+- Added GUIDE.md (comprehensive day-to-day guide) to the image at /app/GUIDE.md.

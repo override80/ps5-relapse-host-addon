@@ -13,7 +13,7 @@ WORKDIR /app
 COPY app/ /app/
 COPY tools/ /app/tools/
 COPY run.sh /addon-run.sh
-COPY README.md TOOLS.md /app/
+COPY README.md TOOLS.md GUIDE.md /app/
 RUN chmod +x /addon-run.sh
 
 EXPOSE 8082 8444
