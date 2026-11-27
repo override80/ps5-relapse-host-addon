@@ -13,3 +13,7 @@
 
 ## 1.1.1
 - Docs: name-agnostic docker exec command (container is app_<repo>_ps5_relapse_host).
+
+## 1.2.0
+- Added disc backup/load payloads to /app/tools: kstuff.elf v1.6.7, etaHEN-2.5B.bin,
+  ps5-app-dumper_v2.10.elf; TOOLS.md gained a "Backup & load your own disc games" section.

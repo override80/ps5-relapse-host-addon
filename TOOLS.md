@@ -57,3 +57,34 @@ python3 /app/tools/send_payload.py $PS5_HOST 9021 /path/to/payload.elf
 - On the PS5 also set: Settings > System > System Software and Updates >
   Automatic Downloads > System Software and Apps > Off.
 - Undo the pin: `python3 pin/ps5-fw-unpin.py --host $PS5_HOST`
+
+## Backup & load your own disc games
+
+Payloads in `/app/tools/`: `kstuff.elf` (v1.6.7 — enables fake packages; 1.15+ is
+required on firmware above 11.60, so needed on 13.40), `etaHEN-2.5B.bin`
+(homebrew enabler + package installer), `ps5-app-dumper_v2.10.elf` (disc dumper).
+
+```bash
+export PS5_HOST=10.11.12.74
+
+# 1. jailbreak via User's Guide (wait for "elfldr is listening on 9021"), then:
+python3 /app/tools/send_payload.py $PS5_HOST 9021 /app/tools/shsrv-ps5.elf
+
+# 2. kstuff FIRST (fpkg support), then etaHEN:
+python3 /app/tools/send_payload.py $PS5_HOST 9021 /app/tools/kstuff.elf
+python3 /app/tools/send_payload.py $PS5_HOST 9021 /app/tools/etaHEN-2.5B.bin
+
+# 3. insert your disc and dump it (follow the on-screen prompts; dump to an
+#    external USB HDD for large games — the fpkg lands in /data or on USB):
+python3 /app/tools/send_payload.py $PS5_HOST 9021 /app/tools/ps5-app-dumper_v2.10.elf
+
+# 4. install the dumped .fpkg on the PS5 via etaHEN's package installer
+#    (Settings > etaHEN, or the PKG install prompt / USB). The game then
+#    appears on the home screen — launch it.
+```
+
+Notes: only dump/load discs you own; keep the console offline; the game must
+require firmware <= 13.40; everything is tethered — after each full boot re-run
+the User's Guide page and re-send kstuff + etaHEN before installing/launching
+fpkg. Optional: ItemzFlow (LightningMods/ItemzFlow .pkg) is a full backup
+manager if you prefer a UI over ps5-app-dumper.

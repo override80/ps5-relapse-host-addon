@@ -1,6 +1,6 @@
 {
   "name": "PS5 Relapse Exploit Host",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "slug": "ps5_relapse_host",
   "description": "Serves the Relapse PS5 exploit chain (FW 7.00-13.60) on host port 8082, fronted by the nginx addon's manuals.playstation.net server block (self-signed cert). See PLAN.md / CONTEXT.md.",
   "url": "https://github.com/ntfargo/Relapse-Exploit",
