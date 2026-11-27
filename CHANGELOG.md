@@ -31,3 +31,7 @@
 
 ## 1.5.0
 - Added GUIDE.md (comprehensive day-to-day guide) to the image at /app/GUIDE.md.
+
+## 1.5.1
+- GUIDE.md: AdGuard Home note — PS5 stays on pfSense DNS (parental filter blocks the
+  playstation service via AdGuard; per-client allow rules documented as fallback).

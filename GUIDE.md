@@ -160,3 +160,17 @@ python3 /app/tools/send_payload.py $PS5_HOST 9021 /app/tools/ftpsrv-ps5.elf  # F
 Dump/load only games you own. Stay offline (PSN requires FW 14.10 anyway).
 Never confirm an update screen. The jailbreak is tethered and can crash the console —
 expect occasional hard resets on 13.40.
+
+## 12. AdGuard Home note (decision: PS5 stays on pfSense DNS)
+
+- AdGuard Home (hassio, 10.11.12.98:53) has `upstream_dns: [10.11.12.254]`, so its
+  clients still pass through the pfSense overrides above — the `update.playstation.net`
+  block holds for AdGuard-listed devices too (verified: update hosts → 0.0.0.0 via AdGuard).
+- BUT AdGuard's parental controls block the `playstation` service, so via AdGuard
+  `manuals.playstation.net` → 0.0.0.0 and the exploit page would NOT load.
+- **Decision: keep the PS5 on pfSense DNS (plain DHCP, no AdGuard mapping).**
+  Do not add the PS5 to the AdGuard client list. If ever needed, add per-client
+  allow rules in AdGuard instead:
+  `@@||playstation.net^$client=10.11.12.74` and `@@||playstation.com^$client=10.11.12.74`.
+- Never change AdGuard's upstream away from 10.11.12.254, or the pfSense overrides
+  stop applying to AdGuard clients.
