@@ -21,3 +21,10 @@
 ## 1.3.0
 - Added ftpsrv-ps5.elf (FTP :2121) and websrv-ps5.elf (HTTP :8084) to /app/tools.
 - TOOLS.md: file transfer, moving backups / PS5 Pro / factory reset, other tools.
+
+## 1.4.0
+- Bundled all tools in /app/tools: webkit-autoloader-installer v0.8.4, pldmgr v0.6.3,
+  ps5debug-NG v1.3.2, CheatRunner v0.18.1, ps5-backpork, klogsrv-ps5.
+- TOOLS.md rewritten: per-tool instructions, exact backup folders (USB root for
+  dumps/installs, /data/etaHen/games, /data/etaHen/pkgs), autoloader setup, pfSense
+  update-block location.
