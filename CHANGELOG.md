@@ -17,3 +17,7 @@
 ## 1.2.0
 - Added disc backup/load payloads to /app/tools: kstuff.elf v1.6.7, etaHEN-2.5B.bin,
   ps5-app-dumper_v2.10.elf; TOOLS.md gained a "Backup & load your own disc games" section.
+
+## 1.3.0
+- Added ftpsrv-ps5.elf (FTP :2121) and websrv-ps5.elf (HTTP :8084) to /app/tools.
+- TOOLS.md: file transfer, moving backups / PS5 Pro / factory reset, other tools.
